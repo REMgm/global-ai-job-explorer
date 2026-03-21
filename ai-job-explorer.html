@@ -360,7 +360,7 @@ a:hover{text-decoration:underline}
 
 <!-- STATS + FILTERS -->
 <div class="stats-bar">
-  <div class="stats-label">TOP AI-FIRST COMPANIES (<strong id="companyCount">31</strong>)</div>
+  <div class="stats-label">AI-FIRST COMPANIES (<strong id="companyCount">42</strong>)</div>
   <div class="filter-chips" id="filterChips">
     <button class="chip active" onclick="filterByDomain(this,'all')">All</button>
     <button class="chip" onclick="filterByDomain(this,'infrastructure')">Infrastructure</button>
@@ -369,6 +369,9 @@ a:hover{text-decoration:underline}
     <button class="chip" onclick="filterByDomain(this,'enterprise')">Enterprise AI</button>
     <button class="chip" onclick="filterByDomain(this,'consumer')">Consumer</button>
     <button class="chip" onclick="filterByDomain(this,'industry')">Industry Leaders</button>
+    <button class="chip" onclick="filterByRegion(this,'NL')">🇳🇱 Netherlands</button>
+    <button class="chip" onclick="filterByRegion(this,'Germany')">🇩🇪 Germany</button>
+    <button class="chip" onclick="filterByRegion(this,'US')">🇺🇸 United States</button>
   </div>
 </div>
 
@@ -898,6 +901,186 @@ const COMPANIES = [
     employees:'11,600+',
     hq:'Ottawa, Canada',
     url:'https://www.shopify.com/careers'
+  },
+  // ===== FROM GLOBAL AI DIRECTORY (PDF-VERIFIED) =====
+  // --- Netherlands ---
+  {
+    id:'philips',
+    name:'Philips',
+    domain:'Industry',
+    domainTag:'industry',
+    category:'Health Technology',
+    accent:'#0b5ed7',
+    domainBg:'rgba(11,94,215,.08)',
+    domainColor:'#0b5ed7',
+    logo:'https://logo.clearbit.com/philips.com',
+    vision:'One of Europe\'s most substantial AI employers in health technology, with FDA-cleared AI algorithms for radiology and ICU patient monitoring. Our AI teams work at the intersection of medical imaging, clinical decision support, and agentic AI systems — regulated, high-stakes, life-saving.',
+    aiRoles:320,
+    employees:'69,000+',
+    hq:'Amsterdam, NL',
+    url:'https://www.careers.philips.com/global/en'
+  },
+  {
+    id:'booking',
+    name:'Booking.com',
+    domain:'Industry',
+    domainTag:'industry',
+    category:'Travel & Online Platform',
+    accent:'#003580',
+    domainBg:'rgba(0,53,128,.08)',
+    domainColor:'#003580',
+    logo:'https://logo.clearbit.com/booking.com',
+    vision:'Operating one of Europe\'s largest machine learning infrastructures, processing billions of search queries annually across 28M+ accommodations. Our AI powers dynamic pricing, recommendation engines, and category optimization at a scale few companies match.',
+    aiRoles:280,
+    employees:'22,000+',
+    hq:'Amsterdam, NL',
+    url:'https://careers.booking.com/'
+  },
+  {
+    id:'adyen',
+    name:'Adyen',
+    domain:'Industry',
+    domainTag:'industry',
+    category:'Global Payments & Fintech',
+    accent:'#0abf53',
+    domainBg:'rgba(10,191,83,.08)',
+    domainColor:'#089943',
+    logo:'https://logo.clearbit.com/adyen.com',
+    vision:'Processing over $800 billion in transactions annually with AI-powered fraud detection that balances precision and recall at extreme scale. Our generative AI for payments is a frontier area — high stakes, high complexity, high impact.',
+    aiRoles:150,
+    employees:'4,200+',
+    hq:'Amsterdam, NL',
+    url:'https://www.adyen.com/careers'
+  },
+  {
+    id:'ing',
+    name:'ING',
+    domain:'Industry',
+    domainTag:'industry',
+    category:'Banking & Financial Services',
+    accent:'#ff6200',
+    domainBg:'rgba(255,98,0,.08)',
+    domainColor:'#cc4e00',
+    logo:'https://logo.clearbit.com/ing.com',
+    vision:'AI transformation across 38 million customers in 40 countries — from customer service chatbots to credit decisioning and anti-money laundering. Our "AI for All" training program is building organization-wide AI literacy at a scale rare in banking.',
+    aiRoles:240,
+    employees:'60,000+',
+    hq:'Amsterdam, NL',
+    url:'https://www.ing.jobs/netherlands'
+  },
+  {
+    id:'rabobank',
+    name:'Rabobank',
+    domain:'Industry',
+    domainTag:'industry',
+    category:'Sustainable Banking & AgriFood',
+    accent:'#003c82',
+    domainBg:'rgba(0,60,130,.08)',
+    domainColor:'#003c82',
+    logo:'https://logo.clearbit.com/rabobank.com',
+    vision:'A cooperative bank applying AI to sustainable finance, food supply chains, and agricultural value creation. Our "Banking for Food" strategy creates unique AI opportunities in commodity price forecasting, supply chain optimization, and rural economic development.',
+    aiRoles:130,
+    employees:'43,000+',
+    hq:'Utrecht, NL',
+    url:'https://www.werkenbijrabobank.nl/'
+  },
+  // --- Germany ---
+  {
+    id:'mercedes',
+    name:'Mercedes-Benz',
+    domain:'Industry',
+    domainTag:'industry',
+    category:'Automotive AI & Autonomous Driving',
+    accent:'#333333',
+    domainBg:'rgba(0,0,0,.05)',
+    domainColor:'#333',
+    logo:'https://logo.clearbit.com/mercedes-benz.com',
+    vision:'Premium automotive manufacturing accelerating AI across vehicle design, autonomous driving, and production. The first automaker with German Level 3 autonomous approval — our Generative AI Engineers work on vehicle simulation, perception systems, and customer interaction.',
+    aiRoles:480,
+    employees:'166,000+',
+    hq:'Stuttgart, Germany',
+    url:'https://careers.mercedes-benz.com/'
+  },
+  {
+    id:'celonis',
+    name:'Celonis',
+    domain:'Enterprise AI',
+    domainTag:'enterprise',
+    category:'Process Mining & Intelligence',
+    accent:'#47d7ac',
+    domainBg:'rgba(71,215,172,.08)',
+    domainColor:'#2da882',
+    logo:'https://logo.clearbit.com/celonis.com',
+    vision:'AI-native process intelligence that reconstructs and optimizes business operations from event log data. Our Execution Management System combines process mining with automated recommendations — anomaly detection, prediction, and prescription across enterprise workflows.',
+    aiRoles:210,
+    employees:'3,500+',
+    hq:'Munich, Germany',
+    url:'https://www.celonis.com/careers/'
+  },
+  {
+    id:'sap',
+    name:'SAP',
+    domain:'Enterprise AI',
+    domainTag:'enterprise',
+    category:'Enterprise Software & ERP',
+    accent:'#0070f2',
+    domainBg:'rgba(0,112,242,.08)',
+    domainColor:'#005cc5',
+    logo:'https://logo.clearbit.com/sap.com',
+    vision:'Embedding "Business AI" across the world\'s enterprise backbone — serving 400,000+ organizations. Our partnership with Microsoft on generative AI integration represents one of the most extensive AI efforts in enterprise software history, transforming ERP, supply chain, and human capital management.',
+    aiRoles:1600,
+    employees:'107,000+',
+    hq:'Walldorf, Germany',
+    url:'https://jobs.sap.com/'
+  },
+  {
+    id:'bosch',
+    name:'Bosch',
+    domain:'Industry',
+    domainTag:'industry',
+    category:'Engineering & Industrial AI',
+    accent:'#ea0016',
+    domainBg:'rgba(234,0,22,.06)',
+    domainColor:'#bb0012',
+    logo:'https://logo.clearbit.com/bosch.com',
+    vision:'One of the world\'s largest engineering conglomerates deploying AI across manufacturing, autonomous vehicles, smart homes, and IoT. With €7B annual R&D and the "Bosch AI" initiative, we build edge AI where model efficiency and hardware-software co-design are essential.',
+    aiRoles:580,
+    employees:'420,000+',
+    hq:'Stuttgart, Germany',
+    url:'https://www.bosch.com/careers/'
+  },
+  // --- US (new) ---
+  {
+    id:'google',
+    name:'Google',
+    domain:'Platform',
+    domainTag:'platform',
+    category:'AI Research & Cloud Platform',
+    accent:'#4285f4',
+    domainBg:'rgba(66,133,244,.08)',
+    domainColor:'#3367d6',
+    logo:'https://logo.clearbit.com/google.com',
+    vision:'The most extensive AI R&D organization globally, investing $30B+ annually — more than most national governments. From TensorFlow and TPUs to Gemini and Search, AI capabilities are integrated throughout every product and infrastructure layer.',
+    aiRoles:3200,
+    employees:'182,000+',
+    hq:'Mountain View, CA',
+    url:'https://careers.google.com/'
+  },
+  {
+    id:'snowflake',
+    name:'Snowflake',
+    domain:'Platform',
+    domainTag:'platform',
+    category:'Cloud Data & AI Platform',
+    accent:'#29b5e8',
+    domainBg:'rgba(41,181,232,.08)',
+    domainColor:'#1f91ba',
+    logo:'https://logo.clearbit.com/snowflake.com',
+    vision:'Expanding from cloud data warehousing into a full AI platform with Snowpark, Cortex, and vector database capabilities. Our architecture — separating compute and storage with elastic scaling — creates distinctive opportunities in emerging platform AI development.',
+    aiRoles:340,
+    employees:'7,000+',
+    hq:'Bozeman, MT',
+    url:'https://careers.snowflake.com/'
   }
 ];
 
@@ -905,6 +1088,7 @@ const COMPANIES = [
 // RENDERING
 // =============================
 let currentFilter = 'all';
+let currentRegion = '';
 let currentSearch = '';
 
 function renderCompanies(){
@@ -914,13 +1098,14 @@ function renderCompanies(){
 
   let filtered = COMPANIES.filter(c => {
     const matchFilter = currentFilter === 'all' || c.domainTag === currentFilter;
+    const matchRegion = currentRegion === '' || c.hq.includes(currentRegion);
     const matchSearch = currentSearch === '' ||
       c.name.toLowerCase().includes(currentSearch) ||
       c.domain.toLowerCase().includes(currentSearch) ||
       c.category.toLowerCase().includes(currentSearch) ||
       c.vision.toLowerCase().includes(currentSearch) ||
       c.hq.toLowerCase().includes(currentSearch);
-    return matchFilter && matchSearch;
+    return matchFilter && matchRegion && matchSearch;
   });
 
   countEl.textContent = filtered.length;
@@ -971,6 +1156,15 @@ function filterByDomain(el, domain){
   document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
   el.classList.add('active');
   currentFilter = domain;
+  currentRegion = '';
+  renderCompanies();
+}
+
+function filterByRegion(el, region){
+  document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+  el.classList.add('active');
+  currentFilter = 'all';
+  currentRegion = region;
   renderCompanies();
 }
 
