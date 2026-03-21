@@ -248,6 +248,8 @@ a{color:var(--primary-light);text-decoration:none}
 .sources-section .src{font-size:11px;color:var(--text3);line-height:1.6}
 .sources-section .src a{color:var(--primary-light);opacity:.7}
 
+@keyframes fadeShake{0%{opacity:0;transform:translateX(-6px)}20%{transform:translateX(5px)}40%{transform:translateX(-4px)}60%{transform:translateX(3px)}80%{opacity:1;transform:translateX(-1px)}100%{opacity:1;transform:translateX(0)}}
+
 /* --- ABOUT PANEL --- */
 .about-panel{position:fixed;inset:0;z-index:300;background:var(--bg);transform:translateY(100%);transition:transform .35s cubic-bezier(.4,0,.2,1);overflow-y:auto}
 .about-panel.open{transform:translateY(0)}
@@ -457,6 +459,10 @@ a{color:var(--primary-light);text-decoration:none}
 
 <!-- ASSESSMENT PANEL -->
 <div class="assess-panel" id="assessPanel">
+  <div class="assess-header" style="display:flex;align-items:center;justify-content:space-between;padding:14px 20px 10px;flex-shrink:0">
+    <h2 style="font-size:16px;font-weight:700">Personal AI Assessment</h2>
+    <button class="detail-close" onclick="closeAssessment()">✕</button>
+  </div>
   <div class="assess-progress"><div class="assess-progress-bar" id="assessProgress"></div></div>
   <div class="assess-content" id="assessContent"></div>
   <div class="assess-nav" id="assessNav"></div>
@@ -914,6 +920,18 @@ const OCCUPATIONS = [
    tasks:{technical:75,physical:70,analysis:60,equipment:80,monitoring:65},
    rationale:'AgTech is growing fast with precision farming, drone monitoring, and IoT sensors. But field technicians who operate, maintain, and calibrate this equipment remain essential.',
    related:['6111','6121','7112']},
+  {id:'2222',title:'Midwife',category:'Healthcare',employment:1600000,risk:1,salary:55000,growth:5,country:'Global',
+   tasks:{care:95,physical:85,communication:90,judgment:85,emergency:80},
+   rationale:'Midwifery is among the most AI-resistant occupations — requiring physical care, emotional support, split-second clinical judgment, and deep trust during one of life\'s most vulnerable moments.',
+   related:['2221','2211','3355']},
+  {id:'3321',title:'Insurance Claims Adjuster',category:'Finance & Insurance',employment:680000,risk:8,salary:65000,growth:-8,country:'Global',
+   tasks:{assessment:85,investigation:70,documentation:88,communication:60,judgment:55},
+   rationale:'AI can process standard claims automatically, assess damage from photos, and flag fraud patterns. Complex and contested claims requiring investigation and negotiation retain human value.',
+   related:['2413','2411a','2411']},
+  {id:'2633',title:'Sociologist / Political Scientist',category:'Professional Services',employment:320000,risk:5,salary:88000,growth:4,country:'Global',
+   tasks:{research:85,analysis:80,writing:80,communication:65,critical_thinking:75},
+   rationale:'AI can process survey data and identify patterns at scale. But framing research questions, interpreting social phenomena in cultural context, and advising on policy require human expertise.',
+   related:['2631','2641','2635']},
 ];
 
 const CATEGORIES = [
@@ -1040,6 +1058,9 @@ const AI_ADVICE = {
   '2519':{tools:['Claude Code','LangChain','HuggingFace','MLflow'],actions:['You build the AI — stay at the frontier of model architectures','Focus on novel research, system design, and AI safety','Specialize in AI evaluation, alignment, and governance','Your meta-skill of building AI is the most valuable skill in the economy'],upskill:['Frontier model development','AI safety & alignment','Agent architecture','AI systems design']},
   '2513d':{tools:['GitHub Actions AI','Terraform AI','ArgoCD AI','Datadog AI'],actions:['Embrace platform engineering as the evolution of DevOps','Use AI for automated incident response and root cause analysis','Focus on reliability strategy and developer experience','Shift from manual automation to AI-powered infrastructure intelligence'],upskill:['Platform engineering','AIOps','SRE practices','AI infrastructure']},
   '6130':{tools:['Precision ag platforms','Drone monitoring AI','IoT farm sensors','Climate AI'],actions:['Master precision agriculture technology and data interpretation','Use AI-powered drone and satellite monitoring for crop health','Focus on hands-on equipment operation and field calibration','Bridge the gap between AgTech innovation and practical farming'],upskill:['Precision agriculture','Drone operation','AgTech data analytics','Sustainable farming tech']},
+  '2222':{tools:['Fetal monitoring AI','Telehealth platforms','Clinical decision AI','Birth planning tools'],actions:['Use AI fetal monitoring for enhanced early warning detection','Leverage telehealth for prenatal consultations and follow-up','Your hands-on care and emotional presence are literally irreplaceable','Focus on holistic, person-centered care — the core of midwifery'],upskill:['AI-assisted fetal monitoring','Telehealth midwifery','High-risk pregnancy tech','Evidence-based practice tools']},
+  '3321':{tools:['Claims AI platforms','Damage assessment AI','Fraud detection AI','Document AI'],actions:['Use AI for rapid standard claims processing and triage','Leverage photo/video AI for damage assessment','Focus on complex investigations and contested claims','Specialize in fraud investigation where human intuition is essential'],upskill:['AI claims platforms','Fraud analytics','Complex negotiation','InsurTech tools']},
+  '2633':{tools:['Survey analysis AI','NLP text analysis','Statistical AI tools','Research synthesis AI'],actions:['Use AI to process and analyze large-scale survey and social data','Leverage NLP for sentiment and discourse analysis at scale','Focus on research design, interpretation, and policy advisory','Your contextual understanding of social phenomena is what AI lacks'],upskill:['Computational social science','AI research methods','Policy analytics','Data-driven advocacy']},
 };
 
 // ===== STATE =====
@@ -1941,14 +1962,19 @@ function renderAssessStep(){
   `;
   document.getElementById('assessNav').innerHTML = `
     ${assessStep>0?'<button class="btn-secondary" onclick="assessStep--;renderAssessStep()">Back</button>':''}
-    <button class="btn-primary" ${selected===undefined?'disabled':''} onclick="assessStep++;renderAssessStep()">
+    <button class="btn-primary" ${selected===undefined?'disabled':''} onclick="${selected===undefined?'showAssessHint()':'assessStep++;renderAssessStep()'}">
       ${assessStep===QUESTIONS.length-1?'See Results':'Continue'}
     </button>
+    <div class="assess-hint" id="assessHint" style="display:none;text-align:center;font-size:12px;color:var(--orange);margin-top:8px;animation:fadeShake .4s ease">Please select an answer to continue</div>
   `;
 }
 function selectAssessOption(i){
   assessAnswers[assessStep] = i;
   renderAssessStep();
+}
+function showAssessHint(){
+  const hint = document.getElementById('assessHint');
+  if(hint){hint.style.display='block';hint.style.animation='none';hint.offsetHeight;hint.style.animation='fadeShake .4s ease';}
 }
 
 function showAssessResults(){
