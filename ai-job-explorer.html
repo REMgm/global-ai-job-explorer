@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>AI Job Explorer — Discover AI-First Companies & Roles</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --bg:#f8f9fa;
+  --bg-white:#ffffff;
+  --bg-hover:#f1f3f4;
+  --bg-elevated:#ffffff;
+  --text-primary:#202124;
+  --text-secondary:#5f6368;
+  --text-tertiary:#80868b;
+  --text-link:#1a73e8;
+  --accent:#1a73e8;
+  --accent-light:#e8f0fe;
+  --accent-hover:#1765cc;
+  --border:#dadce0;
+  --border-light:#e8eaed;
+  --shadow-sm:0 1px 3px rgba(60,64,67,.08),0 1px 2px rgba(60,64,67,.04);
+  --shadow-md:0 2px 8px rgba(60,64,67,.1),0 1px 3px rgba(60,64,67,.06);
+  --shadow-lg:0 8px 24px rgba(60,64,67,.12),0 2px 8px rgba(60,64,67,.06);
+  --shadow-xl:0 12px 40px rgba(60,64,67,.15),0 4px 12px rgba(60,64,67,.08);
+  --radius:12px;
+  --radius-lg:16px;
+  --radius-xl:24px;
+  --radius-pill:100px;
+  --font:'Inter',system-ui,-apple-system,sans-serif;
+  --transition:all .2s cubic-bezier(.4,0,.2,1);
+}
+
+html{font-family:var(--font);background:var(--bg);color:var(--text-primary);-webkit-font-smoothing:antialiased;scroll-behavior:smooth}
+body{min-height:100vh}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+input{font-family:inherit;color:inherit}
+a{color:var(--text-link);text-decoration:none}
+a:hover{text-decoration:underline}
+
+/* === HEADER === */
+.site-header{
+  position:sticky;top:0;z-index:100;
+  background:var(--bg-white);
+  border-bottom:1px solid var(--border-light);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+}
+.header-inner{
+  max-width:1280px;margin:0 auto;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:12px 32px;gap:24px;
+}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text-primary)}
+.logo-mark{
+  width:36px;height:36px;border-radius:10px;
+  background:linear-gradient(135deg,#4285f4,#34a853,#fbbc04,#ea4335);
+  display:flex;align-items:center;justify-content:center;
+  color:#fff;font-weight:800;font-size:16px;
+}
+.logo-text{font-size:18px;font-weight:700;letter-spacing:-.3px}
+.btn-back{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:8px 16px;border-radius:var(--radius-pill);
+  font-size:13px;font-weight:500;color:var(--text-secondary);
+  transition:var(--transition);text-decoration:none;
+}
+.btn-back:hover{background:var(--bg-hover);color:var(--text-primary);text-decoration:none}
+
+/* === HERO === */
+.hero{
+  text-align:center;padding:64px 32px 48px;
+  max-width:720px;margin:0 auto;
+}
+.hero h1{
+  font-size:40px;font-weight:700;letter-spacing:-.5px;
+  line-height:1.2;color:var(--text-primary);margin-bottom:16px;
+}
+.hero h1 .gradient{
+  background:linear-gradient(135deg,#4285f4,#34a853);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.hero p{
+  font-size:17px;line-height:1.6;color:var(--text-secondary);
+  max-width:560px;margin:0 auto 36px;
+}
+
+/* === SEARCH === */
+.search-container{
+  max-width:640px;margin:0 auto;position:relative;
+}
+.search-box{
+  width:100%;height:52px;
+  padding:0 52px 0 52px;
+  border:1px solid var(--border);
+  border-radius:var(--radius-pill);
+  font-size:16px;color:var(--text-primary);
+  background:var(--bg-white);
+  transition:var(--transition);
+  outline:none;
+}
+.search-box::placeholder{color:var(--text-tertiary)}
+.search-box:focus{
+  border-color:var(--accent);
+  box-shadow:0 0 0 3px rgba(26,115,232,.12);
+}
+.search-icon{
+  position:absolute;left:18px;top:50%;transform:translateY(-50%);
+  width:20px;height:20px;color:var(--text-tertiary);pointer-events:none;
+}
+.search-clear{
+  position:absolute;right:14px;top:50%;transform:translateY(-50%);
+  width:28px;height:28px;border-radius:50%;
+  display:none;align-items:center;justify-content:center;
+  color:var(--text-tertiary);font-size:18px;
+  transition:var(--transition);
+}
+.search-clear:hover{background:var(--bg-hover);color:var(--text-primary)}
+.search-clear.visible{display:flex}
+
+/* === STATS BAR === */
+.stats-bar{
+  max-width:1280px;margin:0 auto;
+  padding:24px 32px 8px;
+  display:flex;align-items:center;justify-content:space-between;
+  flex-wrap:wrap;gap:12px;
+}
+.stats-label{font-size:12px;font-weight:600;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:.8px}
+.stats-label strong{color:var(--text-primary);font-weight:700;font-size:14px}
+.filter-chips{display:flex;gap:6px;flex-wrap:wrap}
+.chip{
+  padding:6px 14px;border-radius:var(--radius-pill);
+  font-size:13px;font-weight:500;color:var(--text-secondary);
+  background:var(--bg-white);border:1px solid var(--border-light);
+  transition:var(--transition);
+}
+.chip:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-light)}
+.chip.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+
+/* === COMPANY GRID === */
+.grid-container{
+  max-width:1280px;margin:0 auto;
+  padding:24px 32px 64px;
+}
+.company-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(380px,1fr));
+  gap:20px;
+}
+@media(max-width:860px){.company-grid{grid-template-columns:1fr}}
+
+/* === COMPANY CARD === */
+.company-card{
+  background:var(--bg-white);
+  border:1px solid var(--border-light);
+  border-radius:var(--radius-lg);
+  padding:28px;
+  transition:var(--transition);
+  cursor:pointer;
+  position:relative;
+  overflow:hidden;
+  display:flex;flex-direction:column;
+}
+.company-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:var(--card-accent,var(--accent));
+  opacity:0;transition:opacity .2s ease;
+}
+.company-card:hover{
+  border-color:transparent;
+  box-shadow:var(--shadow-lg);
+  transform:translateY(-2px);
+}
+.company-card:hover::before{opacity:1}
+
+.card-top{display:flex;align-items:flex-start;gap:16px;margin-bottom:16px}
+.card-logo{
+  width:56px;height:56px;border-radius:14px;
+  background:var(--bg);
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;overflow:hidden;
+  border:1px solid var(--border-light);
+}
+.card-logo img{width:36px;height:36px;object-fit:contain}
+.card-logo .fallback{
+  font-size:20px;font-weight:800;
+  color:var(--card-accent,var(--accent));
+}
+.card-info{flex:1;min-width:0}
+.card-name{font-size:18px;font-weight:700;color:var(--text-primary);line-height:1.3;margin-bottom:4px}
+.card-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.card-domain{
+  font-size:12px;font-weight:600;
+  padding:3px 10px;border-radius:var(--radius-pill);
+  background:var(--domain-bg,var(--accent-light));
+  color:var(--domain-color,var(--accent));
+}
+.card-category{font-size:13px;color:var(--text-tertiary);font-weight:500}
+
+.card-vision{
+  font-size:14px;line-height:1.65;color:var(--text-secondary);
+  margin-bottom:20px;flex:1;
+  display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;
+}
+.card-footer{
+  display:flex;align-items:center;justify-content:space-between;
+  padding-top:16px;border-top:1px solid var(--border-light);
+}
+.card-stats{display:flex;gap:16px}
+.card-stat{font-size:12px;color:var(--text-tertiary)}
+.card-stat strong{color:var(--text-primary);font-weight:600}
+.card-cta{
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:13px;font-weight:600;color:var(--accent);
+  padding:6px 14px;border-radius:var(--radius-pill);
+  transition:var(--transition);
+}
+.card-cta:hover{background:var(--accent-light);text-decoration:none}
+.card-cta svg{width:16px;height:16px;transition:transform .2s ease}
+.company-card:hover .card-cta svg{transform:translateX(3px)}
+
+/* === EMPTY STATE === */
+.empty-state{
+  text-align:center;padding:80px 32px;
+  display:none;
+}
+.empty-state.visible{display:block}
+.empty-icon{font-size:48px;margin-bottom:16px;opacity:.5}
+.empty-title{font-size:18px;font-weight:600;color:var(--text-primary);margin-bottom:8px}
+.empty-desc{font-size:14px;color:var(--text-tertiary)}
+
+/* === FOOTER === */
+.site-footer{
+  background:var(--bg-white);border-top:1px solid var(--border-light);
+  padding:32px;text-align:center;
+}
+.footer-inner{max-width:1280px;margin:0 auto}
+.footer-text{font-size:13px;color:var(--text-tertiary);line-height:1.6}
+.footer-text a{color:var(--text-secondary);font-weight:500}
+.footer-links{display:flex;justify-content:center;gap:24px;margin-top:12px}
+.footer-links a{font-size:13px;color:var(--text-tertiary);text-decoration:none}
+.footer-links a:hover{color:var(--text-primary)}
+
+/* === NO RESULTS ANIMATION === */
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.company-card{animation:fadeUp .4s ease both}
+.company-card:nth-child(1){animation-delay:.02s}
+.company-card:nth-child(2){animation-delay:.04s}
+.company-card:nth-child(3){animation-delay:.06s}
+.company-card:nth-child(4){animation-delay:.08s}
+.company-card:nth-child(5){animation-delay:.1s}
+.company-card:nth-child(6){animation-delay:.12s}
+.company-card:nth-child(7){animation-delay:.14s}
+.company-card:nth-child(8){animation-delay:.16s}
+.company-card:nth-child(9){animation-delay:.18s}
+.company-card:nth-child(10){animation-delay:.2s}
+.company-card:nth-child(11){animation-delay:.22s}
+.company-card:nth-child(12){animation-delay:.24s}
+.company-card:nth-child(13){animation-delay:.26s}
+.company-card:nth-child(14){animation-delay:.28s}
+.company-card:nth-child(15){animation-delay:.3s}
+.company-card:nth-child(16){animation-delay:.32s}
+.company-card:nth-child(17){animation-delay:.34s}
+.company-card:nth-child(18){animation-delay:.36s}
+.company-card:nth-child(19){animation-delay:.38s}
+.company-card:nth-child(20){animation-delay:.4s}
+
+/* === RESPONSIVE === */
+@media(max-width:768px){
+  .header-inner{padding:12px 16px}
+  .btn-back span,.btn-back{font-size:0}
+  .btn-back svg{font-size:initial;width:20px;height:20px}
+  .hero{padding:40px 20px 32px}
+  .hero h1{font-size:28px}
+  .hero p{font-size:15px}
+  .stats-bar{padding:16px 16px 4px}
+  .grid-container{padding:16px 16px 48px}
+  .company-grid{grid-template-columns:1fr;gap:12px}
+  .company-card{padding:20px}
+  .card-logo{width:48px;height:48px;border-radius:12px}
+  .card-logo img{width:28px;height:28px}
+  .card-name{font-size:16px}
+}
+
+/* === FEATURED BADGE === */
+.featured-badge{
+  position:absolute;top:16px;right:16px;
+  font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;
+  padding:4px 10px;border-radius:var(--radius-pill);
+  background:linear-gradient(135deg,#fbbc04,#ea4335);
+  color:#fff;
+}
+
+/* === TOOLTIP / HOVER DETAIL === */
+.card-employees{
+  display:inline-flex;align-items:center;gap:4px;
+}
+.card-employees svg{width:14px;height:14px;color:var(--text-tertiary)}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="header-inner">
+    <a href="https://global-ai-job-explorer.vercel.app" class="logo">
+      <div class="logo-mark">AI</div>
+      <div class="logo-text">Job Explorer</div>
+    </a>
+    <a href="https://global-ai-job-explorer.vercel.app" class="btn-back">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
+      Back to AI Impact Explorer
+    </a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <h1>Explore <span class="gradient">AI-First</span> Companies</h1>
+  <p>See how leaders like NVIDIA, Google, Anthropic and others describe their AI vision, then explore roles shaping what comes next.</p>
+
+  <div class="search-container">
+    <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+    <input class="search-box" id="searchInput" type="text" placeholder="Search AI companies, domains, or vision keywords..">
+    <button class="search-clear" id="searchClear" onclick="clearSearch()">×</button>
+  </div>
+</section>
+
+<!-- STATS + FILTERS -->
+<div class="stats-bar">
+  <div class="stats-label">TOP AI-FIRST COMPANIES (<strong id="companyCount">20</strong>)</div>
+  <div class="filter-chips" id="filterChips">
+    <button class="chip active" onclick="filterByDomain(this,'all')">All</button>
+    <button class="chip" onclick="filterByDomain(this,'infrastructure')">Infrastructure</button>
+    <button class="chip" onclick="filterByDomain(this,'research')">Research & Models</button>
+    <button class="chip" onclick="filterByDomain(this,'platform')">Platform</button>
+    <button class="chip" onclick="filterByDomain(this,'enterprise')">Enterprise AI</button>
+    <button class="chip" onclick="filterByDomain(this,'consumer')">Consumer</button>
+  </div>
+</div>
+
+<!-- GRID -->
+<div class="grid-container">
+  <div class="company-grid" id="companyGrid"></div>
+  <div class="empty-state" id="emptyState">
+    <div class="empty-icon">🔍</div>
+    <div class="empty-title">No companies match your search</div>
+    <div class="empty-desc">Try different keywords or clear your filters</div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-text">
+      AI Job Explorer — Part of the <a href="https://global-ai-job-explorer.vercel.app">Global AI Job Explorer (GAJE)</a> project<br>
+      Data sourced from public filings, press releases, and verified AI vision statements. Updated March 2026.
+    </div>
+    <div class="footer-links">
+      <a href="https://global-ai-job-explorer.vercel.app">AI Impact Explorer</a>
+      <a href="https://www.linkedin.com/in/yourprofile">LinkedIn</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// =============================
+// TOP 20 AI-FIRST COMPANIES
+// =============================
+const COMPANIES = [
+  {
+    id:'nvidia',
+    name:'NVIDIA',
+    domain:'Infrastructure',
+    domainTag:'infrastructure',
+    category:'AI Computing & Hardware',
+    accent:'#76b900',
+    domainBg:'rgba(118,185,0,.1)',
+    domainColor:'#5a8f00',
+    logo:'https://logo.clearbit.com/nvidia.com',
+    vision:'Accelerating computing to bring superhuman capabilities to every human, in every industry. We build the platforms that power the entire AI ecosystem — from training the world\'s largest models to deploying intelligence at the edge.',
+    aiRoles:1200,
+    employees:'29,600+',
+    hq:'Santa Clara, CA',
+    featured:true,
+    url:'https://www.nvidia.com/en-us/about-nvidia/careers/'
+  },
+  {
+    id:'google-deepmind',
+    name:'Google DeepMind',
+    domain:'Research & Models',
+    domainTag:'research',
+    category:'AGI Research',
+    accent:'#4285f4',
+    domainBg:'rgba(66,133,244,.1)',
+    domainColor:'#3367d6',
+    logo:'https://logo.clearbit.com/deepmind.google',
+    vision:'Solve intelligence, then use that to solve everything else. Our team of scientists, engineers, and ethicists is building safe, beneficial AI to advance science, transform work, and improve billions of lives.',
+    aiRoles:850,
+    employees:'3,000+',
+    hq:'London, UK',
+    featured:true,
+    url:'https://deepmind.google/careers/'
+  },
+  {
+    id:'anthropic',
+    name:'Anthropic',
+    domain:'Research & Models',
+    domainTag:'research',
+    category:'AI Safety & Research',
+    accent:'#d4a574',
+    domainBg:'rgba(212,165,116,.1)',
+    domainColor:'#b07d4f',
+    logo:'https://logo.clearbit.com/anthropic.com',
+    vision:'Building reliable, interpretable, and steerable AI systems. Our Constitutional AI approach ensures safety at scale — creating models that are helpful, honest, and harmless while pushing the frontier of capability.',
+    aiRoles:620,
+    employees:'1,500+',
+    hq:'San Francisco, CA',
+    featured:true,
+    url:'https://www.anthropic.com/careers'
+  },
+  {
+    id:'openai',
+    name:'OpenAI',
+    domain:'Research & Models',
+    domainTag:'research',
+    category:'AGI & Superintelligence',
+    accent:'#10a37f',
+    domainBg:'rgba(16,163,127,.1)',
+    domainColor:'#0d8c6d',
+    logo:'https://logo.clearbit.com/openai.com',
+    vision:'Ensuring that artificial general intelligence benefits all of humanity. We\'re developing increasingly capable AI systems — from GPT to agents — and deploying them broadly while maintaining the highest safety standards.',
+    aiRoles:980,
+    employees:'3,500+',
+    hq:'San Francisco, CA',
+    featured:true,
+    url:'https://openai.com/careers/'
+  },
+  {
+    id:'microsoft',
+    name:'Microsoft',
+    domain:'Platform',
+    domainTag:'platform',
+    category:'Enterprise AI & Cloud',
+    accent:'#00a4ef',
+    domainBg:'rgba(0,164,239,.1)',
+    domainColor:'#0078d4',
+    logo:'https://logo.clearbit.com/microsoft.com',
+    vision:'Empowering every person and every organization on the planet with AI to achieve more. Our Copilot vision weaves intelligence into every workflow — from code to documents to business decisions.',
+    aiRoles:2400,
+    employees:'228,000+',
+    hq:'Redmond, WA',
+    url:'https://careers.microsoft.com/v2/global/en/ai-jobs'
+  },
+  {
+    id:'meta',
+    name:'Meta',
+    domain:'Research & Models',
+    domainTag:'research',
+    category:'Open-Source AI & Social',
+    accent:'#0668e1',
+    domainBg:'rgba(6,104,225,.1)',
+    domainColor:'#0553b8',
+    logo:'https://logo.clearbit.com/meta.com',
+    vision:'Building the future of human connection through open AI innovation. Our LLaMA models — openly available for research and commercial use — represent our belief that progress in AI should be shared, not siloed.',
+    aiRoles:1600,
+    employees:'72,400+',
+    hq:'Menlo Park, CA',
+    url:'https://www.metacareers.com/areas-of-work/artificial-intelligence/'
+  },
+  {
+    id:'amazon',
+    name:'Amazon',
+    domain:'Platform',
+    domainTag:'platform',
+    category:'Cloud AI & Commerce',
+    accent:'#ff9900',
+    domainBg:'rgba(255,153,0,.1)',
+    domainColor:'#cc7a00',
+    logo:'https://logo.clearbit.com/amazon.com',
+    vision:'Democratizing machine learning and generative AI for every developer and every organization through AWS. From Bedrock to custom silicon, we\'re making enterprise AI accessible, scalable, and cost-effective.',
+    aiRoles:2100,
+    employees:'1,500,000+',
+    hq:'Seattle, WA',
+    url:'https://www.amazon.jobs/en/teams/amazon-ai'
+  },
+  {
+    id:'apple',
+    name:'Apple',
+    domain:'Consumer',
+    domainTag:'consumer',
+    category:'On-Device AI',
+    accent:'#333333',
+    domainBg:'rgba(0,0,0,.06)',
+    domainColor:'#333333',
+    logo:'https://logo.clearbit.com/apple.com',
+    vision:'Integrating intelligence seamlessly into everyday experiences. Apple Intelligence is personal, private, and powerful — running on-device to enhance writing, images, communication, and Siri without compromising user privacy.',
+    aiRoles:890,
+    employees:'164,000+',
+    hq:'Cupertino, CA',
+    url:'https://www.apple.com/careers/us/tml.html'
+  },
+  {
+    id:'tesla',
+    name:'Tesla',
+    domain:'Infrastructure',
+    domainTag:'infrastructure',
+    category:'Autonomous AI & Robotics',
+    accent:'#cc0000',
+    domainBg:'rgba(204,0,0,.08)',
+    domainColor:'#cc0000',
+    logo:'https://logo.clearbit.com/tesla.com',
+    vision:'Accelerating the transition to sustainable abundance through autonomous AI. Our Full Self-Driving neural networks, Optimus robots, and Dojo supercomputer represent a vertically integrated AI ecosystem unlike any other.',
+    aiRoles:720,
+    employees:'140,000+',
+    hq:'Austin, TX',
+    url:'https://www.tesla.com/careers/search/?type=3'
+  },
+  {
+    id:'xai',
+    name:'xAI',
+    domain:'Research & Models',
+    domainTag:'research',
+    category:'Frontier AI Research',
+    accent:'#1d1d1f',
+    domainBg:'rgba(0,0,0,.06)',
+    domainColor:'#1d1d1f',
+    logo:'https://logo.clearbit.com/x.ai',
+    vision:'Understanding the true nature of the universe through artificial intelligence. With $42B+ in funding and the Colossus supercluster, we\'re building Grok to be the most truth-seeking AI on the planet.',
+    aiRoles:340,
+    employees:'500+',
+    hq:'San Francisco, CA',
+    url:'https://x.ai/careers'
+  },
+  {
+    id:'palantir',
+    name:'Palantir',
+    domain:'Enterprise AI',
+    domainTag:'enterprise',
+    category:'Defense & Enterprise Intelligence',
+    accent:'#101010',
+    domainBg:'rgba(0,0,0,.05)',
+    domainColor:'#333',
+    logo:'https://logo.clearbit.com/palantir.com',
+    vision:'Building the operating system for AI-powered decision making. Our Artificial Intelligence Platform (AIP) turns large language models into operational tools for defense, government, and enterprise — where decisions carry real consequences.',
+    aiRoles:560,
+    employees:'4,000+',
+    hq:'Denver, CO',
+    url:'https://www.palantir.com/careers/'
+  },
+  {
+    id:'databricks',
+    name:'Databricks',
+    domain:'Platform',
+    domainTag:'platform',
+    category:'Data Intelligence Platform',
+    accent:'#ff3621',
+    domainBg:'rgba(255,54,33,.08)',
+    domainColor:'#cc2b1a',
+    logo:'https://logo.clearbit.com/databricks.com',
+    vision:'Democratizing data intelligence so every organization can harness AI. Our lakehouse architecture unifies data, analytics, and AI in one platform — enabling companies to go from raw data to production AI in record time.',
+    aiRoles:780,
+    employees:'7,000+',
+    hq:'San Francisco, CA',
+    url:'https://www.databricks.com/company/careers'
+  },
+  {
+    id:'salesforce',
+    name:'Salesforce',
+    domain:'Enterprise AI',
+    domainTag:'enterprise',
+    category:'CRM & Agentic AI',
+    accent:'#00a1e0',
+    domainBg:'rgba(0,161,224,.1)',
+    domainColor:'#0082b4',
+    logo:'https://logo.clearbit.com/salesforce.com',
+    vision:'Delivering trusted AI agents that transform customer relationships at scale. Agentforce represents a new era — autonomous AI agents that work alongside humans to sell, service, and market with unprecedented intelligence.',
+    aiRoles:920,
+    employees:'73,500+',
+    hq:'San Francisco, CA',
+    url:'https://www.salesforce.com/company/careers/'
+  },
+  {
+    id:'adobe',
+    name:'Adobe',
+    domain:'Consumer',
+    domainTag:'consumer',
+    category:'Creative AI',
+    accent:'#ff0000',
+    domainBg:'rgba(255,0,0,.07)',
+    domainColor:'#cc0000',
+    logo:'https://logo.clearbit.com/adobe.com',
+    vision:'Unleashing creativity for all through responsible generative AI. Firefly was built to be commercially safe from day one — trained on licensed content so enterprises can generate, edit, and scale creative assets with confidence.',
+    aiRoles:680,
+    employees:'30,000+',
+    hq:'San Jose, CA',
+    url:'https://careers.adobe.com/us/en'
+  },
+  {
+    id:'ibm',
+    name:'IBM',
+    domain:'Enterprise AI',
+    domainTag:'enterprise',
+    category:'Enterprise AI & Consulting',
+    accent:'#0530ad',
+    domainBg:'rgba(5,48,173,.08)',
+    domainColor:'#0530ad',
+    logo:'https://logo.clearbit.com/ibm.com',
+    vision:'AI that works with you, not instead of you — scaling trust and transparency across the enterprise. watsonx gives organizations governance, flexibility, and choice to deploy AI models that meet regulatory requirements and business needs.',
+    aiRoles:1100,
+    employees:'282,000+',
+    hq:'Armonk, NY',
+    url:'https://www.ibm.com/careers/search?field_of_work=Artificial%20Intelligence'
+  },
+  {
+    id:'mistral',
+    name:'Mistral AI',
+    domain:'Research & Models',
+    domainTag:'research',
+    category:'Open-Weight Models',
+    accent:'#f54e42',
+    domainBg:'rgba(245,78,66,.08)',
+    domainColor:'#c43e35',
+    logo:'https://logo.clearbit.com/mistral.ai',
+    vision:'Making frontier AI ubiquitous and accessible through open-weight models. Born in Paris, we believe the best AI should be portable, customizable, and free from lock-in — empowering developers everywhere.',
+    aiRoles:180,
+    employees:'600+',
+    hq:'Paris, France',
+    url:'https://mistral.ai/careers/'
+  },
+  {
+    id:'huggingface',
+    name:'Hugging Face',
+    domain:'Platform',
+    domainTag:'platform',
+    category:'ML Community & Hub',
+    accent:'#ffbd45',
+    domainBg:'rgba(255,189,69,.12)',
+    domainColor:'#cc9737',
+    logo:'https://logo.clearbit.com/huggingface.co',
+    vision:'Democratizing good machine learning, one model at a time. We\'re the GitHub of AI — an open platform where 500K+ models, 100K+ datasets, and a global community of builders collaborate to advance the field together.',
+    aiRoles:240,
+    employees:'300+',
+    hq:'New York, NY',
+    url:'https://huggingface.co/jobs'
+  },
+  {
+    id:'scaleai',
+    name:'Scale AI',
+    domain:'Infrastructure',
+    domainTag:'infrastructure',
+    category:'AI Data & Evaluation',
+    accent:'#6c5ce7',
+    domainBg:'rgba(108,92,231,.08)',
+    domainColor:'#5a4cc4',
+    logo:'https://logo.clearbit.com/scale.com',
+    vision:'Accelerating the development of AI through better data, evaluation, and alignment. We power the world\'s most advanced AI models — from defense to enterprise — with the data infrastructure they need to get smarter, faster, and safer.',
+    aiRoles:420,
+    employees:'1,200+',
+    hq:'San Francisco, CA',
+    url:'https://scale.com/careers'
+  },
+  {
+    id:'cohere',
+    name:'Cohere',
+    domain:'Enterprise AI',
+    domainTag:'enterprise',
+    category:'Enterprise Language AI',
+    accent:'#39d353',
+    domainBg:'rgba(57,211,83,.08)',
+    domainColor:'#2da643',
+    logo:'https://logo.clearbit.com/cohere.com',
+    vision:'Making AI accessible to every enterprise through language understanding that speaks your data. Our retrieval-augmented generation and Command models are built for the real world — private, deployable anywhere, and grounded in your knowledge.',
+    aiRoles:190,
+    employees:'500+',
+    hq:'Toronto, Canada',
+    url:'https://cohere.com/careers'
+  },
+  {
+    id:'samsung',
+    name:'Samsung AI',
+    domain:'Consumer',
+    domainTag:'consumer',
+    category:'On-Device AI & Hardware',
+    accent:'#1428a0',
+    domainBg:'rgba(20,40,160,.08)',
+    domainColor:'#1428a0',
+    logo:'https://logo.clearbit.com/samsung.com',
+    vision:'Bringing Galaxy AI to billions of devices worldwide. From real-time translation to generative photo editing, we\'re embedding intelligence directly into the hardware people carry every day — making AI personal and universal.',
+    aiRoles:950,
+    employees:'267,800+',
+    hq:'Seoul, South Korea',
+    url:'https://www.samsung.com/us/careers/'
+  }
+];
+
+// =============================
+// RENDERING
+// =============================
+let currentFilter = 'all';
+let currentSearch = '';
+
+function renderCompanies(){
+  const grid = document.getElementById('companyGrid');
+  const empty = document.getElementById('emptyState');
+  const countEl = document.getElementById('companyCount');
+
+  let filtered = COMPANIES.filter(c => {
+    const matchFilter = currentFilter === 'all' || c.domainTag === currentFilter;
+    const matchSearch = currentSearch === '' ||
+      c.name.toLowerCase().includes(currentSearch) ||
+      c.domain.toLowerCase().includes(currentSearch) ||
+      c.category.toLowerCase().includes(currentSearch) ||
+      c.vision.toLowerCase().includes(currentSearch) ||
+      c.hq.toLowerCase().includes(currentSearch);
+    return matchFilter && matchSearch;
+  });
+
+  countEl.textContent = filtered.length;
+
+  if(filtered.length === 0){
+    grid.innerHTML = '';
+    empty.classList.add('visible');
+    return;
+  }
+  empty.classList.remove('visible');
+
+  grid.innerHTML = filtered.map(c => `
+    <div class="company-card"
+         style="--card-accent:${c.accent};--domain-bg:${c.domainBg};--domain-color:${c.domainColor}"
+         onclick="openCompany('${c.id}')">
+      ${c.featured ? '<div class="featured-badge">Featured</div>' : ''}
+      <div class="card-top">
+        <div class="card-logo" id="logo-${c.id}">
+          <img src="${c.logo}" alt="${c.name}" onerror="logoFallback(this,'${c.id}','${c.name.charAt(0)}')">
+        </div>
+        <div class="card-info">
+          <div class="card-name">${c.name}</div>
+          <div class="card-meta">
+            <span class="card-domain">${c.domain}</span>
+            <span class="card-category">${c.category}</span>
+          </div>
+        </div>
+      </div>
+      <div class="card-vision">${c.vision}</div>
+      <div class="card-footer">
+        <div class="card-stats">
+          <span class="card-stat"><strong>${c.aiRoles.toLocaleString()}+</strong> AI roles</span>
+          <span class="card-stat card-employees">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            ${c.employees}
+          </span>
+        </div>
+        <a class="card-cta" href="${c.url}" target="_blank" onclick="event.stopPropagation()">
+          View AI roles
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  `).join('');
+}
+
+function filterByDomain(el, domain){
+  document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+  el.classList.add('active');
+  currentFilter = domain;
+  renderCompanies();
+}
+
+function clearSearch(){
+  document.getElementById('searchInput').value = '';
+  document.getElementById('searchClear').classList.remove('visible');
+  currentSearch = '';
+  renderCompanies();
+}
+
+function logoFallback(img, id, initial, domain2){
+  // Try Google favicon service as fallback
+  const c = COMPANIES.find(x => x.id === id);
+  if(c && !img.dataset.tried){
+    img.dataset.tried = '1';
+    const domain = c.logo.replace('https://logo.clearbit.com/','');
+    img.src = 'https://www.google.com/s2/favicons?sz=128&domain=' + domain;
+  } else {
+    // Final fallback: styled initial
+    img.style.display = 'none';
+    img.parentElement.innerHTML = '<div class="fallback" style="color:'+( c ? c.accent : '#1a73e8')+'">'+initial+'</div>';
+  }
+}
+
+function openCompany(id){
+  const c = COMPANIES.find(x => x.id === id);
+  if(c && c.url) window.open(c.url, '_blank');
+}
+
+// Search
+document.getElementById('searchInput').addEventListener('input', function(e){
+  currentSearch = e.target.value.toLowerCase().trim();
+  document.getElementById('searchClear').classList.toggle('visible', currentSearch.length > 0);
+  renderCompanies();
+});
+
+// Init
+renderCompanies();
+</script>
+</body>
+</html>
