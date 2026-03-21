@@ -49,6 +49,10 @@ a{color:var(--primary-light);text-decoration:none}
 .header{position:sticky;top:0;z-index:100;background:var(--glass);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:12px 16px;display:flex;align-items:center;justify-content:space-between}
 .header h1{font-size:16px;font-weight:700;background:linear-gradient(135deg,var(--primary-light),#a78bfa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:-.3px}
 .header-sub{font-size:10px;color:var(--text3);font-weight:500;letter-spacing:.5px;text-transform:uppercase}
+.logo-mark{width:34px;height:34px;border-radius:9px;background:linear-gradient(135deg,#4285f4,#34a853,#fbbc04,#ea4335);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:13px;text-decoration:none;flex-shrink:0;transition:var(--transition)}
+.logo-mark:hover{transform:scale(1.08);box-shadow:0 4px 12px rgba(66,133,244,.3)}
+.companies-btn{display:flex;align-items:center;gap:5px;background:var(--bg3);padding:6px 12px;border-radius:var(--radius-pill);font-size:12px;font-weight:600;color:var(--text2);transition:var(--transition);text-decoration:none;white-space:nowrap}
+.companies-btn:hover{background:var(--bg4);color:var(--text)}
 .country-btn{display:flex;align-items:center;gap:6px;background:var(--bg3);padding:6px 12px;border-radius:var(--radius-pill);font-size:13px;font-weight:500;color:var(--text2);transition:var(--transition)}
 .country-btn:hover{background:var(--bg4);color:var(--text)}
 .country-btn svg{width:16px;height:16px;opacity:.6}
@@ -368,11 +372,15 @@ html.light .share-btn.x{background:#0f1419;color:#fff}
 <body>
 <!-- HEADER -->
 <header class="header">
-  <div>
-    <h1>AI Job Explorer</h1>
-    <div class="header-sub">Global Occupation Intelligence</div>
+  <div style="display:flex;align-items:center;gap:10px">
+    <a href="ai-job-explorer.html" class="logo-mark" title="Explore AI-First Companies">AI</a>
+    <div>
+      <h1>AI Job Explorer</h1>
+      <div class="header-sub">Global Occupation Intelligence</div>
+    </div>
   </div>
   <div class="header-right">
+    <a href="ai-job-explorer.html" class="companies-btn" title="Explore AI-First Companies">🏢 Companies</a>
     <button class="theme-btn" id="themeBtn" onclick="toggleTheme()" title="Toggle light/dark mode">🌙</button>
     <button class="about-btn" onclick="openAbout()" title="About this project">ℹ️</button>
     <button class="country-btn" onclick="showCountryPicker()">
