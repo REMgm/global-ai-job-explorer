@@ -1374,14 +1374,18 @@ function getFilteredWithRisk(){
     const q = searchQuery.toLowerCase();
     list = list.filter(o=>o.title.toLowerCase().includes(q)||o.category.toLowerCase().includes(q));
   }
-  // Sort
-  const [field,dir] = sortBy.split('-');
-  list.sort((a,b)=>{
-    if(field==='alpha') return a.title.localeCompare(b.title);
-    const va = field==='risk'?a.risk:field==='employment'?a.employment:field==='salary'?a.salary:a.growth;
-    const vb = field==='risk'?b.risk:field==='employment'?b.employment:field==='salary'?b.salary:b.growth;
-    return dir==='desc'?vb-va:va-vb;
-  });
+  // Sort — in Opportunity Mode, default to fastest growth occupations
+  if(opportunityMode && sortBy === 'risk-desc'){
+    list.sort((a,b) => b.growth - a.growth);
+  } else {
+    const [field,dir] = sortBy.split('-');
+    list.sort((a,b)=>{
+      if(field==='alpha') return a.title.localeCompare(b.title);
+      const va = field==='risk'?a.risk:field==='employment'?a.employment:field==='salary'?a.salary:a.growth;
+      const vb = field==='risk'?b.risk:field==='employment'?b.employment:field==='salary'?b.salary:b.growth;
+      return dir==='desc'?vb-va:va-vb;
+    });
+  }
   return list;
 }
 
