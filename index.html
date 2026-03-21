@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="light">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -56,7 +56,7 @@ a{color:var(--primary-light);text-decoration:none}
 .country-btn{display:flex;align-items:center;gap:6px;background:var(--bg3);padding:6px 12px;border-radius:var(--radius-pill);font-size:13px;font-weight:500;color:var(--text2);transition:var(--transition)}
 .country-btn:hover{background:var(--bg4);color:var(--text)}
 .country-btn svg{width:16px;height:16px;opacity:.6}
-.about-btn{width:36px;height:36px;border-radius:50%;background:var(--bg3);display:flex;align-items:center;justify-content:center;transition:var(--transition);font-size:16px;flex-shrink:0}
+.about-btn{padding:6px 12px;border-radius:var(--radius-pill);background:var(--bg3);display:flex;align-items:center;justify-content:center;transition:var(--transition);font-size:12px;font-weight:600;color:var(--text2);flex-shrink:0}
 .about-btn:hover{background:var(--bg4)}
 .header-right{display:flex;align-items:center;gap:8px}
 
@@ -375,14 +375,14 @@ html.light .share-btn.x{background:#0f1419;color:#fff}
   <div style="display:flex;align-items:center;gap:10px">
     <a href="ai-job-explorer.html" class="logo-mark" title="Explore AI-First Companies">AI</a>
     <div>
-      <h1>AI Job Explorer</h1>
+      <h1>Job Explorer</h1>
       <div class="header-sub">Global Occupation Intelligence</div>
     </div>
   </div>
   <div class="header-right">
-    <a href="ai-job-explorer.html" class="companies-btn" title="Explore AI-First Companies">🏢 Companies</a>
-    <button class="theme-btn" id="themeBtn" onclick="toggleTheme()" title="Toggle light/dark mode">🌙</button>
-    <button class="about-btn" onclick="openAbout()" title="About this project">ℹ️</button>
+    <a href="ai-job-explorer.html" class="companies-btn" title="Explore AI Jobs">🏢 Explore AI Jobs</a>
+    <button class="theme-btn" id="themeBtn" onclick="toggleTheme()" title="Toggle light/dark mode">☀️</button>
+    <button class="about-btn" onclick="openAbout()" title="About">About</button>
     <button class="country-btn" onclick="showCountryPicker()">
       <span id="countryFlag">🌍</span>
       <span id="countryName">Global</span>
@@ -2142,14 +2142,14 @@ function toggleTheme(){
     if(!galaxyPlaying) drawGalaxyFrame();
   }
 }
-// Restore saved theme on load
+// Restore saved theme on load (default is now light)
 (function(){
   try{
     const saved = localStorage.getItem('gajeTheme');
-    if(saved === 'light'){
-      document.documentElement.classList.add('light');
+    if(saved === 'dark'){
+      document.documentElement.classList.remove('light');
       const btn = document.getElementById('themeBtn');
-      if(btn) btn.textContent = '☀️';
+      if(btn) btn.textContent = '🌙';
     }
   }catch(e){}
 })();
