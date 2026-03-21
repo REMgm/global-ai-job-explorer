@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <radialGradient id="bgGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#0a2a2a"/>
+      <stop offset="100%" stop-color="#050f0f"/>
+    </radialGradient>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#00ffcc" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#00ffcc" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <!-- Background circle -->
+  <circle cx="100" cy="100" r="95" fill="url(#bgGrad)" stroke="#0ff" stroke-opacity="0.15" stroke-width="2"/>
+  <!-- Globe grid lines -->
+  <g stroke="#00e5cc" stroke-opacity="0.35" stroke-width="1.2" fill="none">
+    <!-- Horizontal arcs -->
+    <ellipse cx="100" cy="100" rx="80" ry="20"/>
+    <ellipse cx="100" cy="100" rx="80" ry="45"/>
+    <ellipse cx="100" cy="100" rx="80" ry="70"/>
+    <!-- Vertical arcs -->
+    <ellipse cx="100" cy="100" rx="20" ry="80" transform="rotate(0,100,100)"/>
+    <ellipse cx="100" cy="100" rx="45" ry="80" transform="rotate(0,100,100)"/>
+    <ellipse cx="100" cy="100" rx="70" ry="80" transform="rotate(0,100,100)"/>
+    <!-- Outer ring -->
+    <circle cx="100" cy="100" r="80"/>
+  </g>
+  <!-- Lobster body -->
+  <g transform="translate(100,110)">
+    <!-- Main body -->
+    <ellipse cx="0" cy="10" rx="35" ry="38" fill="#d63031"/>
+    <ellipse cx="0" cy="10" rx="35" ry="38" fill="url(#glow)" opacity="0.3"/>
+    <!-- Head/face plate -->
+    <ellipse cx="0" cy="-5" rx="30" ry="28" fill="#e74c3c"/>
+    <!-- Left claw arm -->
+    <path d="M-28,0 Q-50,-20 -60,-15 Q-72,-12 -68,-2 Q-64,8 -52,5 Q-40,2 -30,8" fill="#d63031" stroke="#c0392b" stroke-width="1.5"/>
+    <!-- Left claw pincer -->
+    <path d="M-68,-2 Q-78,-8 -75,-15 Q-72,-22 -62,-18 Q-55,-14 -60,-15" fill="#e74c3c" stroke="#c0392b" stroke-width="1"/>
+    <path d="M-68,-2 Q-78,5 -72,10 Q-66,15 -58,8 Q-52,5 -52,5" fill="#e74c3c" stroke="#c0392b" stroke-width="1"/>
+    <!-- Right claw arm -->
+    <path d="M28,0 Q50,-20 60,-15 Q72,-12 68,-2 Q64,8 52,5 Q40,2 30,8" fill="#d63031" stroke="#c0392b" stroke-width="1.5"/>
+    <!-- Right claw pincer -->
+    <path d="M68,-2 Q78,-8 75,-15 Q72,-22 62,-18 Q55,-14 60,-15" fill="#e74c3c" stroke="#c0392b" stroke-width="1"/>
+    <path d="M68,-2 Q78,5 72,10 Q66,15 58,8 Q52,5 52,5" fill="#e74c3c" stroke="#c0392b" stroke-width="1"/>
+    <!-- Eyes -->
+    <circle cx="-12" cy="-12" r="7" fill="#0a2a2a"/>
+    <circle cx="12" cy="-12" r="7" fill="#0a2a2a"/>
+    <circle cx="-12" cy="-12" r="4.5" fill="#00ffcc"/>
+    <circle cx="12" cy="-12" r="4.5" fill="#00ffcc"/>
+    <!-- Eye glow -->
+    <circle cx="-12" cy="-12" r="6" fill="none" stroke="#00ffcc" stroke-opacity="0.4" stroke-width="2"/>
+    <circle cx="12" cy="-12" r="6" fill="none" stroke="#00ffcc" stroke-opacity="0.4" stroke-width="2"/>
+    <!-- Mouth -->
+    <path d="M-10,8 Q0,14 10,8" fill="none" stroke="#0a2a2a" stroke-width="2.5" stroke-linecap="round"/>
+    <!-- Legs -->
+    <g stroke="#c0392b" stroke-width="2.5" stroke-linecap="round" fill="none">
+      <path d="M-25,20 Q-40,30 -45,38"/>
+      <path d="M-20,28 Q-32,40 -35,48"/>
+      <path d="M25,20 Q40,30 45,38"/>
+      <path d="M20,28 Q32,40 35,48"/>
+    </g>
+  </g>
+</svg>
