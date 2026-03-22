@@ -1899,11 +1899,8 @@ function toggleCompare(id){
 }
 function updateCompareUI(){
   const bar = document.getElementById('compareBar');
-  const badge = document.getElementById('compareBadge');
   document.getElementById('compareCount').textContent = compareList.length;
   bar.classList.toggle('visible',compareList.length>0);
-  badge.style.display = compareList.length>0?'flex':'none';
-  badge.textContent = compareList.length;
 }
 function openCompare(){
   if(!compareList.length) return;
