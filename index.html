@@ -7,54 +7,52 @@
 <link rel="icon" id="favicon" type="image/svg+xml" href="logo-dark.svg">
 <meta name="description" content="Explore how AI transforms 81 occupations across 13 countries. GAJEM-scored exposure, opportunity outlooks and a 10-question career assessment.">
 <link rel="canonical" href="https://www.jobexplorer.ai/">
-<meta property="og:title" content="AI Job Explorer, Find Your Future Role">
+<meta property="og:title" content="AI Job Explorer, How Exposed Is Your Career?">
 <meta property="og:description" content="81 occupations. One score each. Explore AI exposure, opportunity and your next move, built on ILO, WEF, OECD and Goldman Sachs 2025-26 data.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.jobexplorer.ai/">
 <meta property="og:image" content="https://www.jobexplorer.ai/og.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="AI Job Explorer, Find Your Future Role">
+<meta name="twitter:title" content="AI Job Explorer, How Exposed Is Your Career?">
 <meta name="twitter:image" content="https://www.jobexplorer.ai/og.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --bg:#101014;--bg2:#17171D;--bg3:#1F1F27;--bg4:#292933;
-  --text:#F5F3F7;--text2:#B6B3C2;--text3:#7E7B8C;
-  --primary:#8B5CF6;--primary-light:#A78BFA;--primary-dim:rgba(139,92,246,.14);
-  --aurora-teal:#2DD4BF;--aurora-peach:#FFB088;
-  --green:#2DD4BF;--green-bg:rgba(45,212,191,.12);
+  --bg:#0B0B0A;--bg2:#141413;--bg3:#1D1D1B;--bg4:#282825;
+  --text:#F4F2ED;--text2:#B5B3AA;--text3:#7D7B73;
+  --primary:#FF5A14;--primary-light:#FF7A40;--primary-dim:rgba(255,90,20,.12);
+  --green:#10b981;--green-bg:rgba(16,185,129,.12);
   --yellow:#f59e0b;--yellow-bg:rgba(245,158,11,.12);
   --orange:#f97316;--orange-bg:rgba(249,115,22,.12);
   --red:#ef4444;--red-bg:rgba(239,68,68,.12);
-  --radius:18px;--radius-sm:12px;--radius-pill:50px;
-  --shadow:0 4px 20px rgba(0,0,0,.30);
-  --shadow-lg:0 16px 48px rgba(139,92,246,.18);
-  --transition:all .25s cubic-bezier(.4,0,.2,1);
-  --font:'Outfit','Helvetica Neue',Arial,sans-serif;
-  --mono:'Outfit',monospace;
-  --border:rgba(139,92,246,.16);--border-hover:rgba(45,212,191,.45);
-  --glass:rgba(16,16,20,.86);--galaxy-bg:rgba(13,12,20,1);
-  --card-border:rgba(139,92,246,.16);--input-border:rgba(139,92,246,.22);
-  --ring-track:rgba(245,243,247,.08);--compare-btn:rgba(245,243,247,.16);--compare-btn-hover:rgba(245,243,247,.28);
+  --radius:4px;--radius-sm:3px;--radius-pill:3px;
+  --shadow:0 1px 0 rgba(0,0,0,.35);
+  --shadow-lg:0 16px 48px rgba(0,0,0,.5);
+  --transition:all .2s cubic-bezier(.4,0,.2,1);
+  --font:'Archivo','Helvetica Neue',Arial,sans-serif;
+  --mono:'JetBrains Mono','SF Mono',Consolas,monospace;
+  --border:rgba(244,242,237,.14);--border-hover:rgba(244,242,237,.34);
+  --glass:rgba(11,11,10,.92);--galaxy-bg:rgba(8,8,8,1);
+  --card-border:rgba(244,242,237,.14);--input-border:rgba(244,242,237,.18);
+  --ring-track:rgba(244,242,237,.1);--compare-btn:rgba(244,242,237,.16);--compare-btn-hover:rgba(244,242,237,.28);
 }
 html.light{
-  --bg:#F6F4F9;--bg2:#FFFFFF;--bg3:#EDEAF4;--bg4:#E0DCEA;
-  --text:#17151D;--text2:#4C4858;--text3:#8C889A;
-  --primary:#6D3FE0;--primary-light:#8B5CF6;--primary-dim:rgba(109,63,224,.08);
-  --aurora-teal:#0FA396;--aurora-peach:#E8804A;
-  --green:#0E8A7C;--green-bg:rgba(14,138,124,.10);
+  --bg:#F4F2ED;--bg2:#FFFFFF;--bg3:#EAE7DF;--bg4:#DDD9CE;
+  --text:#0B0B0A;--text2:#4C4A44;--text3:#8B887D;
+  --primary:#FF4D00;--primary-light:#FF6B24;--primary-dim:rgba(255,77,0,.08);
+  --green:#0E7A45;--green-bg:rgba(14,122,69,.10);
   --yellow:#B77400;--yellow-bg:rgba(183,116,0,.10);
-  --orange:#D95E1A;--orange-bg:rgba(217,94,26,.10);
+  --orange:#D94E00;--orange-bg:rgba(217,78,0,.10);
   --red:#C21F1F;--red-bg:rgba(194,31,31,.10);
-  --shadow:0 4px 20px rgba(23,21,29,.06);
-  --shadow-lg:0 16px 48px rgba(109,63,224,.14);
-  --border:rgba(109,63,224,.16);--border-hover:rgba(15,163,150,.5);
-  --glass:rgba(246,244,249,.9);--galaxy-bg:rgba(13,12,20,1);
-  --card-border:rgba(109,63,224,.16);--input-border:rgba(109,63,224,.22);
-  --ring-track:rgba(23,21,29,.08);--compare-btn:rgba(23,21,29,.10);--compare-btn-hover:rgba(23,21,29,.18);
+  --shadow:0 1px 0 rgba(11,11,10,.05);
+  --shadow-lg:0 16px 48px rgba(11,11,10,.10);
+  --border:rgba(11,11,10,.16);--border-hover:rgba(11,11,10,.38);
+  --glass:rgba(244,242,237,.94);--galaxy-bg:rgba(9,9,9,1);
+  --card-border:rgba(11,11,10,.16);--input-border:rgba(11,11,10,.22);
+  --ring-track:rgba(11,11,10,.10);--compare-btn:rgba(11,11,10,.12);--compare-btn-hover:rgba(11,11,10,.22);
 }
 html{font-family:var(--font);background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;overflow-x:hidden}
 body{min-height:100dvh;padding-bottom:80px;overflow-x:hidden}
@@ -385,52 +383,64 @@ html.light .share-btn.x{background:#0f1419;color:#fff}
 .view-toggle button{padding:5px 10px;border-radius:var(--radius-pill);font-size:11px;font-weight:600;color:var(--text3);transition:var(--transition)}
 .view-toggle button.active{background:var(--bg);color:var(--text);box-shadow:0 1px 4px rgba(0,0,0,.2)}
 
-/* ============ LIQUID AURORA v2.0 ============ */
-body{font-family:var(--font);-webkit-font-smoothing:antialiased;background-color:var(--bg);background-image:radial-gradient(640px 420px at 10% -4%,rgba(139,92,246,.16),transparent 62%),radial-gradient(720px 520px at 92% 26%,rgba(45,212,191,.11),transparent 62%),radial-gradient(640px 520px at 55% 104%,rgba(255,176,136,.09),transparent 62%);background-attachment:fixed}
-html.light body{background-image:radial-gradient(640px 420px at 10% -4%,rgba(109,63,224,.10),transparent 62%),radial-gradient(720px 520px at 92% 26%,rgba(15,163,150,.08),transparent 62%),radial-gradient(640px 520px at 55% 104%,rgba(232,128,74,.07),transparent 62%)}
-::selection{background:#8B5CF6;color:#fff}
-:focus-visible{outline:2px solid var(--aurora-teal);outline-offset:2px}
-.header{background:transparent;border-bottom:1px solid var(--border);box-shadow:none;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
-.header h1{font-weight:800;letter-spacing:-.02em;background:linear-gradient(92deg,var(--text) 30%,var(--primary-light) 70%,var(--aurora-teal));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-.companies-btn,.about-btn,.country-btn,.theme-btn{border:1px solid var(--border);background:var(--bg2);border-radius:50px;box-shadow:none;font-weight:600}
-.companies-btn:hover,.about-btn:hover,.country-btn:hover,.theme-btn:hover{border-color:var(--border-hover)}
-.hero{position:relative;overflow:hidden;padding:60px 20px 36px}
-.hero h2{font-size:clamp(36px,6.4vw,76px);line-height:1;font-weight:800;letter-spacing:-.025em;max-width:880px;background:none;-webkit-text-fill-color:var(--text);color:var(--text)}
-.hero h2 span{background:linear-gradient(92deg,#8B5CF6,#2DD4BF 55%,#FFB088);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
-.hero p{max-width:560px;font-size:16px;color:var(--text2)}
-.la-kicker{font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;margin-bottom:14px;background:linear-gradient(92deg,#8B5CF6,#2DD4BF);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-.la-ribbon{position:absolute;left:-4%;right:-4%;top:-8px;height:100%;z-index:0;pointer-events:none;opacity:.9;animation:laShift 16s ease-in-out infinite alternate}
-.la-ribbon svg{width:108%;height:100%}
-.hero>*:not(.la-ribbon){position:relative;z-index:1}
-@keyframes laShift{from{filter:hue-rotate(0deg)}to{filter:hue-rotate(38deg)}}
-@media(prefers-reduced-motion:reduce){.la-ribbon{animation:none}}
-@media(max-width:760px){.la-ribbon{opacity:.45}}
-.cta-banner{background:linear-gradient(120deg,rgba(139,92,246,.18),rgba(45,212,191,.14));border:1px solid var(--border);border-radius:20px;box-shadow:0 8px 32px rgba(139,92,246,.16)}
-.cta-banner:hover{border-color:var(--border-hover);box-shadow:0 12px 40px rgba(45,212,191,.22);transform:translateY(-1px)}
-.stat-card,.cat-card,.card,.result-card{background:var(--bg2);border:1px solid var(--card-border);border-radius:var(--radius);box-shadow:none}
-.card:hover,.cat-card:hover,.result-card:hover{border-color:var(--border-hover);box-shadow:0 12px 36px rgba(139,92,246,.16);transform:translateY(-2px)}
-.galaxy-container{border:1px solid rgba(139,92,246,.35);border-radius:20px;box-shadow:0 0 48px rgba(139,92,246,.20)}
-.galaxy-legend{font-size:11px;letter-spacing:.04em}
-.view-toggle{border:1px solid var(--border);border-radius:50px;background:var(--bg2)}
-.search-bar{background:var(--bg2);border:1px solid var(--input-border);border-radius:50px;box-shadow:none}
-.search-bar:focus-within{border-color:var(--aurora-teal);box-shadow:0 0 0 4px rgba(45,212,191,.12)}
-.chip{border-radius:50px;border:1px solid var(--border);font-weight:600}
-.chip.active{background:linear-gradient(92deg,#8B5CF6,#2DD4BF);color:#0E0E14;border-color:transparent}
-.sort-select{border:1px solid var(--border);border-radius:50px;background:var(--bg2);color:var(--text)}
-.btn-primary{background:linear-gradient(92deg,#8B5CF6,#2DD4BF);color:#0E0E14;border:none;border-radius:50px;font-weight:700;box-shadow:0 8px 24px rgba(139,92,246,.35)}
-.btn-primary:hover{filter:brightness(1.08);transform:translateY(-1px);box-shadow:0 12px 32px rgba(45,212,191,.35)}
-.btn-secondary{background:transparent;border:1px solid var(--border);border-radius:50px;font-weight:600;color:var(--text)}
-.btn-secondary:hover{border-color:var(--border-hover)}
-.risk-badge{border-radius:50px;font-weight:700}
-.detail-panel,.about-panel,.assess-panel,.compare-panel{background:var(--bg);border:1px solid var(--border);box-shadow:var(--shadow-lg);border-radius:22px}
-.assess-progress-bar{background:linear-gradient(92deg,#8B5CF6,#2DD4BF)}
-.assess-opt{border:1px solid var(--border);border-radius:14px;background:var(--bg2)}
-.assess-opt:hover{border-color:var(--border-hover)}
-.related-chip{border-radius:50px;border:1px solid var(--border)}
-.share-btn{border:1px solid var(--border);border-radius:50px;background:var(--bg2);box-shadow:none}
-.share-btn:hover{border-color:var(--border-hover);transform:translateY(-1px)}
+/* ============ CLINICAL FUTURISM v2.0 ============ */
+body{font-family:var(--font);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+::selection{background:#FF4D00;color:#F4F2ED}
+:focus-visible{outline:2px solid var(--primary);outline-offset:2px}
+::-webkit-scrollbar{width:10px;height:10px}
+::-webkit-scrollbar-thumb{background:var(--bg4);border:3px solid var(--bg);border-radius:0}
+.header{background:var(--bg);border-bottom:1px solid var(--border);box-shadow:none}
+.header h1{font-weight:900;letter-spacing:-.03em;text-transform:uppercase}
+.companies-btn,.about-btn,.country-btn,.theme-btn{border:1px solid var(--border);background:var(--bg2);border-radius:3px;box-shadow:none;font-weight:700;letter-spacing:.06em;text-transform:uppercase;font-size:11px}
+.companies-btn:hover,.about-btn:hover,.country-btn:hover,.theme-btn:hover{border-color:var(--text);background:var(--bg2);color:var(--text)}
+.hero{position:relative;overflow:visible;padding:52px 20px 30px}
+.hero h2{font-size:clamp(38px,7vw,86px);line-height:.94;font-weight:900;letter-spacing:-.035em;text-transform:uppercase;max-width:920px;background:none;-webkit-text-fill-color:var(--text);color:var(--text)}
+.hero h2 span{background:none;-webkit-text-fill-color:var(--primary);color:var(--primary)}
+.hero p{max-width:560px;font-size:15px;color:var(--text2)}
+.cf-kicker{font-family:var(--mono);font-size:10px;letter-spacing:.22em;color:var(--text3);text-transform:uppercase;margin-bottom:16px}
+.cf-chrome{position:absolute;right:4%;top:6px;width:clamp(150px,21vw,270px);aspect-ratio:1;z-index:0;pointer-events:none;animation:cfSpin 36s linear infinite}
+.hero>*:not(.cf-chrome){position:relative;z-index:1}
+@keyframes cfSpin{to{transform:rotate(360deg)}}
+@media(max-width:760px){.cf-chrome{opacity:.3;right:-10%;top:-10px}}
+@media(prefers-reduced-motion:reduce){.cf-chrome{animation:none}}
+.frame-toggle .label{font-family:var(--mono);text-transform:uppercase;font-size:10px;letter-spacing:.14em}
+.cta-banner{background:#0B0B0A;border:1px solid #0B0B0A;border-radius:4px;box-shadow:none}
+.cta-banner h4,.cta-banner .cta-text h4{color:#F4F2ED;text-transform:uppercase;letter-spacing:.05em}
+.cta-banner p,.cta-banner .cta-text p{color:#B5B3AA}
+.cta-banner:hover{background:var(--primary);border-color:var(--primary);transform:none}
+.cta-banner:hover h4,.cta-banner:hover .cta-text h4{color:#0B0B0A}
+.cta-banner:hover p,.cta-banner:hover .cta-text p{color:rgba(11,11,10,.75)}
+.cta-icon{display:none}
+.stat-card,.cat-card,.card,.result-card{background:var(--bg2);border:1px solid var(--border);border-radius:4px;box-shadow:none}
+.card:hover,.cat-card:hover,.result-card:hover,.stat-card:hover{border-color:var(--text);transform:none;box-shadow:none}
+.cat-section h3,.galaxy-header h3,.sources-section h3{font-family:var(--mono);font-weight:600;font-size:11px;letter-spacing:.18em;color:var(--text3);text-transform:uppercase}
+.galaxy-container{border:1px solid var(--text);border-radius:4px}
+.galaxy-legend{font-family:var(--mono);font-size:10px;letter-spacing:.05em;text-transform:uppercase}
+.view-toggle{border:1px solid var(--border);border-radius:3px;background:var(--bg2)}
+.view-toggle button{border-radius:2px;text-transform:uppercase;font-size:10px;letter-spacing:.08em;font-weight:700}
+.search-bar{background:var(--bg2);border:1px solid var(--border);border-radius:3px;box-shadow:none}
+.search-bar:focus-within{border-color:var(--text)}
+.chip{border-radius:3px;border:1px solid var(--border);text-transform:uppercase;font-size:10px;letter-spacing:.06em;font-weight:700}
+.chip.active{background:#0B0B0A;color:#F4F2ED;border-color:#0B0B0A}
+.sort-select{border:1px solid var(--border);border-radius:3px;background:var(--bg2);color:var(--text)}
+.sort-bar .count{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--text3)}
+.btn-primary{background:var(--primary);color:#0B0B0A;border:1px solid var(--primary);border-radius:3px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;box-shadow:none}
+.btn-primary:hover{background:#0B0B0A;border-color:#0B0B0A;color:#F4F2ED;transform:none}
+.btn-secondary{background:transparent;border:1px solid var(--border);border-radius:3px;text-transform:uppercase;font-weight:700;letter-spacing:.05em;color:var(--text)}
+.btn-secondary:hover{border-color:var(--text)}
+.risk-badge{border-radius:3px;font-family:var(--mono);font-weight:700}
+.gt-score,.result-score,.d-stat b,.card-stat b{font-family:var(--mono)}
+.detail-panel,.about-panel,.assess-panel,.compare-panel{background:var(--bg);border:1px solid var(--border);box-shadow:var(--shadow-lg);border-radius:4px}
+.detail-title{letter-spacing:-.02em;font-weight:800}
+.assess-progress-bar{background:var(--primary)}
+.assess-opt{border:1px solid var(--border);border-radius:3px;background:var(--bg2)}
+.assess-opt:hover{border-color:var(--text)}
+.related-chip{border-radius:3px;border:1px solid var(--border)}
+.share-btn{border:1px solid var(--border);border-radius:3px;background:var(--bg2);box-shadow:none}
+.share-btn:hover{border-color:var(--text);transform:none}
 .site-footer{border-top:1px solid var(--border)}
-.overlay{backdrop-filter:blur(4px)}
+.about-content .methodology-grid>div{border:1px solid var(--border);border-radius:4px;background:var(--bg2)}
+.overlay{backdrop-filter:blur(2px)}
 </style>
 <script>
   window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
@@ -462,10 +472,10 @@ html.light body{background-image:radial-gradient(640px 420px at 10% -4%,rgba(109
 <main id="app">
   <!-- HERO -->
   <section class="hero">
-    <div class="la-ribbon" aria-hidden="true"><svg viewBox="0 0 900 300" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="laAur" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#8B5CF6"/><stop offset=".52" stop-color="#2DD4BF"/><stop offset="1" stop-color="#FFB088"/></linearGradient><filter id="laBlur" x="-20%" y="-60%" width="140%" height="220%"><feGaussianBlur stdDeviation="20"/></filter></defs><path d="M-40,225 C150,70 310,300 470,155 C620,25 760,225 940,85" fill="none" stroke="url(#laAur)" stroke-width="64" stroke-linecap="round" opacity=".30" filter="url(#laBlur)"/><path d="M-40,225 C150,70 310,300 470,155 C620,25 760,225 940,85" fill="none" stroke="url(#laAur)" stroke-width="22" stroke-linecap="round" opacity=".85"/></svg></div>
-    <div class="la-kicker">GAJEM v1.0 &middot; 81 Occupations &middot; 13 Countries + Global</div>
+    <div class="cf-chrome" aria-hidden="true"><svg viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true"><defs><linearGradient id="cfChrome" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FDFDFC"/><stop offset=".18" stop-color="#C8CBD1"/><stop offset=".32" stop-color="#F5F6F8"/><stop offset=".48" stop-color="#7E848D"/><stop offset=".56" stop-color="#3E434B"/><stop offset=".63" stop-color="#E7E9ED"/><stop offset=".82" stop-color="#9AA0A9"/><stop offset="1" stop-color="#F2F3F5"/></linearGradient><linearGradient id="cfOr" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FF4D00" stop-opacity=".85"/><stop offset="1" stop-color="#FF4D00" stop-opacity="0"/></linearGradient></defs><circle cx="120" cy="120" r="88" fill="none" stroke="url(#cfChrome)" stroke-width="40"/><circle cx="120" cy="120" r="88" fill="none" stroke="url(#cfOr)" stroke-width="40" stroke-dasharray="86 467" stroke-linecap="round" transform="rotate(-50 120 120)"/></svg></div>
+    <div class="cf-kicker">GAJEM v1.0 &middot; 81 Occupations &middot; 13 Countries + Global</div>
     <h2>How <span>AI-Exposed</span> Is Your Career?</h2>
-    <p>Explore 81 occupations across 13 countries. See which jobs AI will transform and what you can do about it.</p>
+    <p>One score per occupation, built on ILO, WEF, OECD and Goldman Sachs 2025-26 data. See what changes, and what to do about it.</p>
   </section>
 
 
@@ -493,7 +503,7 @@ html.light body{background-image:radial-gradient(640px 420px at 10% -4%,rgba(109
   <!-- GALAXY VISUALIZATION -->
   <div class="galaxy-wrap">
     <div class="galaxy-header">
-      <h3>AI Exposure Galaxy</h3>
+      <h3>Fig. 01 &middot; AI Exposure Galaxy</h3>
       <div class="view-toggle">
         <button class="active" id="galaxyPlayBtn" onclick="toggleGalaxyPlay(this)">Pause</button>
         <button onclick="resetGalaxy()">Reset</button>
